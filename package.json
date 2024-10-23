@@ -10,6 +10,22 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.6"
+    "@astrojs/db": "^0.14.3",
+    "@astrojs/node": "^8.3.4",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/ts-plugin": "^1.10.3",
+    "@libsql/client": "^0.14.0",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "astro": "^4.16.6",
+    "flowbite": "^2.5.2",
+    "flowbite-react": "^0.10.2",
+    "libsql": "^0.4.6",
+    "node-cache": "^5.1.2",
+    "octokit": "^4.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.14"
   }
 }

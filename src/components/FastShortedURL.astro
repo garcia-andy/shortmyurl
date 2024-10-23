@@ -1,0 +1,27 @@
+---
+import CpyButton from '@components/CpyButton.astro';
+interface Props {
+	url: string;
+}
+
+const { url } = Astro.props;
+---
+
+<div class="bg-gray-black bg-opacity-0 backdrop-blur-[8px] rounded-lg p-4 mt-4">
+	<p class="text-gray-400 mb-2">Tu URL acortada:</p>
+	<div class="flex items-center justify-between rounded p-2">
+		<a id="link-shorted" href='#' referrerpolicy="no-referrer" class="text-white text-sm font-bold hover:underline">
+			{url}
+		</a>
+		<CpyButton content={url} />
+	</div>
+</div>
+
+<script is:inline define:vars={{url}}>
+const link = document.querySelector("#link-shorted");
+link.addEventListener('click', e => {
+	e.preventDefault();
+	//fetch(url).then(r => r.json()).then(value => console.log(value))
+	window.location.href = url;
+});
+</script>

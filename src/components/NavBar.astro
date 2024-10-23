@@ -1,0 +1,21 @@
+---
+import LinkLogo from "@components/LinkLogo.astro"
+import GithubLogin from "@components/GithubLogin.astro";
+
+---
+
+<nav class="w-full flex-col sm:flex-row px-sm sm:px-md py-xs sm:py-sm justify-between items-center bg-gray-black bg-opacity-0 backdrop-blur-[3px] border-b border-gray-2 fixed z-10">
+	<div class="flex max-w-[1200px] justify-between items-center flex-1 w-full" >
+	
+	<div class="flex items-center gap-xxs self-stretch hover:cursor-pointer">
+		<a href="/" class="flex items-center space-x-3 transition-opacityhover:opacity-80 rtl:space-x-reverse">	
+			<LinkLogo />	
+			<span class="self-center whitespace-nowrap text-lg font-mediumtracking-tight text-white">
+				Acortador de <span class="text-transparent bg-clip-text bg-gradient-to-rfrom-accent to-accent-dark">Enlaces</span>
+			</span>
+		</a>
+	</div>
+	
+	<div class="sm:hidden flex items-center gap-xs"><GithubLogin text={false} /></div>
+	</div>
+</nav>

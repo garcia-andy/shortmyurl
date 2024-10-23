@@ -1,0 +1,10 @@
+---
+import BasicUnsignedLayout from '@layouts/BasicUnsignedLayout.astro';
+import FastShortedURL from '@components/FastShortedURL.astro';
+
+const { content } = Astro.params;
+---
+
+<BasicUnsignedLayout title="ShortMyURL" content_text="Aquí tienes tu enlace Acortado" submessage='este enlace solo durará 24 horas, para mantenerlo activado, inicia sesión con tu cuenta de GitHub'>
+	<FastShortedURL url={`https://${import.meta.env.URL_NAME}/r/${content}`} />
+</BasicUnsignedLayout>

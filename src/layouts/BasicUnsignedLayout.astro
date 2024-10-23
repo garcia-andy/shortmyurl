@@ -1,0 +1,33 @@
+---
+import Layout from '@layouts/Layout.astro';
+import GithubLogin from '@components/GithubLogin.astro';
+import Title from "@components/Title.astro";
+import LandingCard from "@components/LandingCard.astro";
+
+interface Props {
+	title: string;
+	content_text?: string;
+	submessage?: string;
+}
+
+const { title, content_text, submessage } = Astro.props;
+const content = content_text ?? 'Bienvenido al mejor Acortador de Enlaces';
+const message = submessage ?? 'Acorta tus enlaces con facilidad';
+
+---
+
+<Layout title={title}>
+	<div class="max-w-lg mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<div class="flex justify-center items-start content-start gap-lg w-full flex-wrap ">
+			<LandingCard>
+				<Title isTitle={true} content={content} />
+				<p class="text-gray-400 mb-8 text-pretty">{message}</p>
+				<slot />
+				<div class="text-center">
+					<p class="text-gray-300 mb-4">¿Quieres gestionar tus enlaces?</p>
+					<GithubLogin />
+				</div>
+			</LandingCard>
+		</div>
+	</div>
+</Layout>

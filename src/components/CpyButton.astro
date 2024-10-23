@@ -1,0 +1,30 @@
+---
+interface Props {
+	content: string;
+}
+
+let {  content } = Astro.props
+---
+
+<button id="copy-btn" class="text-gray-400 hover:text-white transition duration-300">
+</button>
+
+<script is:inline define:vars={{ content }}>
+	const normalSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+	</svg>`;
+
+	const successSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+	</svg>`;
+
+	const copyBtn = document.querySelector('#copy-btn');
+	copyBtn.innerHTML = normalSvg;
+	copyBtn.addEventListener('click', () => {
+		navigator.clipboard.writeText(content);
+		copyBtn.innerHTML = successSvg;
+		setTimeout(() => {
+			copyBtn.innerHTML = normalSvg;
+		}, 2000);
+	});
+</script>

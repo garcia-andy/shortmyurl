@@ -1,0 +1,33 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { db, eq, Links } from 'astro:db';
+
+const { hashcode } = Astro.params;
+const time = Date.now();
+
+console.log("Time: ",time)
+
+const link = await db.select().from(Links).where(eq(Links.hash, hashcode));
+console.log("HashLink ",hashcode)
+
+if (link.length > 0) {
+	const unixTime = time - link[0].time;
+	
+	// 60 segundos = 1 minuto
+	// 60 minutos = 1 hora
+	// 24 horas = 1 dia
+	if ( unixTime < 60 * 60 * 24 ) {
+		const { originalUrl } = link[0];
+		return Astro.redirect(originalUrl);
+	}else{
+		console.log('Url expirado: ', unixTime, " => ",link[0].originalUrl);
+		db.delete(Links).where(eq(Links.id, link[0].id));
+	}
+}
+
+return Astro.redirect('/404');
+---
+
+<Layout title="Redirecting...">
+	<p>Redirecting...</p>
+</Layout>
